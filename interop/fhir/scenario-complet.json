@@ -3,7 +3,7 @@
   "type": "transaction",
   "entry": [
     {
-      "fullUrl": "Organization/org-hopital-its",
+      "fullUrl": "http://localhost:8080/fhir/Organization/org-hopital-its",
       "resource": {
         "resourceType": "Organization",
         "id": "org-hopital-its",
@@ -22,7 +22,7 @@
       }
     },
     {
-      "fullUrl": "Patient/pat-0001",
+      "fullUrl": "http://localhost:8080/fhir/Patient/pat-0001",
       "resource": {
         "resourceType": "Patient",
         "id": "pat-0001",
@@ -63,7 +63,7 @@
       }
     },
     {
-      "fullUrl": "Practitioner/pra-0001",
+      "fullUrl": "http://localhost:8080/fhir/Practitioner/pra-0001",
       "resource": {
         "resourceType": "Practitioner",
         "id": "pra-0001",
@@ -99,7 +99,7 @@
       }
     },
     {
-      "fullUrl": "Practitioner/pra-0002",
+      "fullUrl": "http://localhost:8080/fhir/Practitioner/pra-0002",
       "resource": {
         "resourceType": "Practitioner",
         "id": "pra-0002",
@@ -135,7 +135,7 @@
       }
     },
     {
-      "fullUrl": "Location/loc-rx1",
+      "fullUrl": "http://localhost:8080/fhir/Location/loc-rx1",
       "resource": {
         "resourceType": "Location",
         "id": "loc-rx1",
@@ -152,7 +152,7 @@
       }
     },
     {
-      "fullUrl": "Encounter/enc-2026-0001",
+      "fullUrl": "http://localhost:8080/fhir/Encounter/enc-2026-0001",
       "resource": {
         "resourceType": "Encounter",
         "id": "enc-2026-0001",
@@ -204,7 +204,7 @@
       }
     },
     {
-      "fullUrl": "ServiceRequest/sr-acc-2026-0001",
+      "fullUrl": "http://localhost:8080/fhir/ServiceRequest/sr-acc-2026-0001",
       "resource": {
         "resourceType": "ServiceRequest",
         "id": "sr-acc-2026-0001",
@@ -288,7 +288,7 @@
       }
     },
     {
-      "fullUrl": "Appointment/apt-2026-0001",
+      "fullUrl": "http://localhost:8080/fhir/Appointment/apt-2026-0001",
       "resource": {
         "resourceType": "Appointment",
         "id": "apt-2026-0001",
@@ -362,7 +362,7 @@
       }
     },
     {
-      "fullUrl": "ImagingStudy/is-acc-2026-0001",
+      "fullUrl": "http://localhost:8080/fhir/ImagingStudy/is-acc-2026-0001",
       "resource": {
         "resourceType": "ImagingStudy",
         "id": "is-acc-2026-0001",
@@ -464,7 +464,7 @@
       }
     },
     {
-      "fullUrl": "DiagnosticReport/dr-acc-2026-0001",
+      "fullUrl": "http://localhost:8080/fhir/DiagnosticReport/dr-acc-2026-0001",
       "resource": {
         "resourceType": "DiagnosticReport",
         "id": "dr-acc-2026-0001",
@@ -545,7 +545,7 @@
       }
     },
     {
-      "fullUrl": "Binary/cda-acc-2026-0001",
+      "fullUrl": "http://localhost:8080/fhir/Binary/cda-acc-2026-0001",
       "resource": {
         "resourceType": "Binary",
         "id": "cda-acc-2026-0001",
@@ -558,7 +558,7 @@
       }
     },
     {
-      "fullUrl": "DocumentReference/doc-acc-2026-0001",
+      "fullUrl": "http://localhost:8080/fhir/DocumentReference/doc-acc-2026-0001",
       "resource": {
         "resourceType": "DocumentReference",
         "id": "doc-acc-2026-0001",
