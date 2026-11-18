@@ -14,7 +14,7 @@ Ce dossier contient un exemple officiel par type de ressource utilisé dans le p
 |---|---|
 | Organization | `organization-example.json` |
 | Patient | `patient-example.json` |
-| Practitioner | `practitioner-example.json` |
+| Practitioner | `practitioner-example-f001-evdb.json` (l'exemple principal `practitioner-example.json` ne passe pas le validateur) |
 | Location | `location-example.json` |
 | Encounter | `encounter-example.json` |
 | ServiceRequest | `servicerequest-example-di.json` (imagerie : scanner thoracique) |
@@ -30,9 +30,9 @@ Ce dossier contient un exemple officiel par type de ressource utilisé dans le p
   pointent vers des ressources absentes de ce dossier) ni avec le scénario SIH-ITS.
 - Ils servent uniquement de **référence de lecture** (structure, champs, codes).
   **Ne pas les envoyer au serveur FHIR du projet.**
-- Certains contiennent des URLs `example.org` : le validateur HL7 les signale comme erreurs
-  (`appointment-example.json`, `documentreference-example.json`, `practitioner-example.json`).
-  C'est attendu pour des exemples de la spécification.
+- Deux fichiers contiennent des URLs `example.org` que le validateur HL7 signale comme erreurs :
+  `appointment-example.json` et `documentreference-example.json`. Aucun autre exemple officiel
+  Appointment ou DocumentReference de R4 ne passe le validateur sans erreur ; ils sont donc gardés tels quels.
 
 ## Données du scénario SIH-ITS
 
