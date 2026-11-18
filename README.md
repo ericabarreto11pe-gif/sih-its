@@ -5,9 +5,9 @@ compte rendu CDA R2 et PACS Orthanc**, autour d'un parcours d'imagerie de bout e
 
 | Membre | Rôle principal |
 |---|---|
-| A – _nom_ | SIH / dossier patient (consultation, prescription, espace patient) |
-| B – _nom_ | RIS, compte rendu, connecteur CDA, worklist DICOM |
-| C – _nom_ | Infrastructure (3 VM, proxy HTTPS, IAM), serveur FHIR, Orthanc |
+| A – _Siham_ | SIH / dossier patient (consultation, prescription, espace patient) |
+| B – _Erica_ | RIS, compte rendu, connecteur CDA, worklist DICOM |
+| C – _Bassila_ | Infrastructure (3 VM, proxy HTTPS, IAM), serveur FHIR, Orthanc |
 
 ## Arborescence
 
