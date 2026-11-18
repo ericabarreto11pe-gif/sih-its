@@ -1,0 +1,106 @@
+# Requêtes FHIR et Orthanc du scénario – à exécuter dans VS Code avec l'extension « REST Client »
+# (cliquer sur « Send Request » au-dessus de chaque requête).
+# Prérequis : docker compose up -d  (serveur FHIR et Orthanc démarrés)
+
+@fhir = http://localhost:8080/fhir
+@orthanc = http://localhost:8042
+@orthancUser = ris
+@orthancPass = changeme
+@acc = ACC-2026-0001
+
+###############################################################################
+# 0. Charger tout le scénario d'un coup (Bundle transaction, état final)
+###############################################################################
+POST {{fhir}}
+Content-Type: application/fhir+json
+
+< ./scenario-complet.json
+
+###############################################################################
+# 1. SIH → FHIR : prescription
+###############################################################################
+
+### Retrouver la demande par numéro d'examen
+GET {{fhir}}/ServiceRequest?identifier={{acc}}
+
+###############################################################################
+# 2. RIS : liste de travail et programmation (Appointment)
+###############################################################################
+
+### Liste de travail du RIS : demandes d'imagerie actives, les plus anciennes d'abord
+GET {{fhir}}/ServiceRequest?status=active&category=http://snomed.info/sct|363679005&_sort=authored&_include=ServiceRequest:subject
+
+### Rendez-vous RIS d'une demande
+GET {{fhir}}/Appointment?based-on=ServiceRequest/sr-acc-2026-0001
+
+### Planning d'une salle pour une journée
+GET {{fhir}}/Appointment?location=Location/loc-rx1&date=2026-11-25&_sort=date
+
+### Patient arrivé dans le service (booked → arrived)
+PATCH {{fhir}}/Appointment/apt-2026-0001
+Content-Type: application/json-patch+json
+
+[{ "op": "replace", "path": "/status", "value": "arrived" }]
+
+###############################################################################
+# 3. Acquisition : étude dans Orthanc, puis ImagingStudy dans FHIR
+###############################################################################
+
+### Orthanc : retrouver l'étude par numéro d'examen (ce que fait le RIS)
+POST {{orthanc}}/tools/find
+Authorization: Basic {{orthancUser}}:{{orthancPass}}
+Content-Type: application/json
+
+{ "Level": "Study", "Query": { "AccessionNumber": "{{acc}}" }, "Expand": true }
+
+### ImagingStudy liée à la demande (paramètre R4 : « basedon », sans tiret)
+GET {{fhir}}/ImagingStudy?basedon=ServiceRequest/sr-acc-2026-0001
+
+###############################################################################
+# 4. Compte rendu : DiagnosticReport + DocumentReference + CDA
+###############################################################################
+
+### CR de la demande (avec le radiologue inclus)
+GET {{fhir}}/DiagnosticReport?based-on=ServiceRequest/sr-acc-2026-0001&_include=DiagnosticReport:results-interpreter
+
+### Document CDA rattaché au compte rendu
+GET {{fhir}}/DocumentReference?related=DiagnosticReport/dr-acc-2026-0001
+
+### Télécharger le XML CDA brut
+GET {{fhir}}/Binary/cda-acc-2026-0001
+Accept: text/xml
+
+###############################################################################
+# 5. Retour dans le dossier patient (vue SIH)
+###############################################################################
+
+### Tous les CR validés de la patiente, du plus récent au plus ancien
+GET {{fhir}}/DiagnosticReport?subject=Patient/pat-0001&status=final&_sort=-issued
+
+### Tous les documents CDA de la patiente
+GET {{fhir}}/DocumentReference?subject=Patient/pat-0001&status=current&type=http://loinc.org|18748-4
+
+### Tout le dossier en une requête
+GET {{fhir}}/Patient/pat-0001/$everything
+
+###############################################################################
+# Tests négatifs
+###############################################################################
+
+### Référence patient incorrecte → doit être refusée (pas de rattachement silencieux)
+POST {{fhir}}/ServiceRequest
+Content-Type: application/fhir+json
+
+{
+  "resourceType": "ServiceRequest",
+  "status": "active",
+  "intent": "order",
+  "code": { "text": "Radiographie du thorax" },
+  "subject": { "reference": "Patient/patient-inexistant" }
+}
+
+### Orthanc sans authentification → 401 attendu
+POST {{orthanc}}/tools/find
+Content-Type: application/json
+
+{ "Level": "Study", "Query": { "AccessionNumber": "{{acc}}" } }

@@ -1,0 +1,16 @@
+{
+  // Ouvrir avec : File > Open Workspace from File… > sih-its.code-workspace
+  // Chaque composant apparaît comme un dossier séparé dans l'explorateur.
+  "folders": [
+    { "name": "Projet (racine)", "path": "." },
+    { "name": "A · SIH / DPI", "path": "services/sih" },
+    { "name": "B · RIS", "path": "services/ris" },
+    { "name": "B · Connecteur CDA", "path": "services/cda-connector" },
+    { "name": "B · Interop (FHIR, CDA, DICOM)", "path": "interop" },
+    { "name": "C · Infrastructure", "path": "infra" },
+    { "name": "Documentation", "path": "docs" }
+  ],
+  "settings": {
+    "files.exclude": { "**/.DS_Store": true }
+  }
+}

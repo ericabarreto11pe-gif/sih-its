@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Compte rendu d'imagerie CDA R2 – scénario fictif SIH-ITS (aucune donnée réelle) -->
+<ClinicalDocument xmlns="urn:hl7-org:v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <realmCode code="FR"/>
+  <typeId root="2.16.840.1.113883.1.3" extension="POCD_HD000040"/>
+  <!-- 1. Identification du document -->
+  <id root="2.25.15160578678088058174301844912568396362.3" extension="DOC-ACC-2026-0001-v1"/>
+  <code code="18748-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Diagnostic imaging study"/>
+  <title>Compte rendu de radiographie du thorax</title>
+  <effectiveTime value="20261125143000+0100"/>
+  <confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25"/>
+  <languageCode code="fr-FR"/>
+  <setId root="2.25.15160578678088058174301844912568396362.3" extension="DOC-ACC-2026-0001"/>
+  <versionNumber value="1"/>
+  <!-- 2. Identification du patient -->
+  <recordTarget>
+    <patientRole>
+      <id root="2.25.15160578678088058174301844912568396362.1" extension="PAT-0001"/>
+      <patient>
+        <name><given>Léa</given><family>Martin</family></name>
+        <administrativeGenderCode code="F" codeSystem="2.16.840.1.113883.5.1"/>
+        <birthTime value="19850412"/>
+      </patient>
+    </patientRole>
+  </recordTarget>
+  <!-- 3. Auteur et date -->
+  <author>
+    <time value="20261125142000+0100"/>
+    <assignedAuthor>
+      <id root="2.25.15160578678088058174301844912568396362.4" extension="PRA-0002"/>
+      <assignedPerson><name><prefix>Dr</prefix><given>Sophie</given><family>Bernard</family></name></assignedPerson>
+      <representedOrganization>
+        <id root="2.25.15160578678088058174301844912568396362.7"/>
+        <name>Hôpital ITS (établissement fictif)</name>
+      </representedOrganization>
+    </assignedAuthor>
+  </author>
+  <custodian>
+    <assignedCustodian>
+      <representedCustodianOrganization>
+        <id root="2.25.15160578678088058174301844912568396362.7"/>
+        <name>Hôpital ITS (établissement fictif)</name>
+      </representedCustodianOrganization>
+    </assignedCustodian>
+  </custodian>
+  <!-- Validation (signature) par le radiologue -->
+  <legalAuthenticator>
+    <time value="20261125143000+0100"/>
+    <signatureCode code="S"/>
+    <assignedEntity>
+      <id root="2.25.15160578678088058174301844912568396362.4" extension="PRA-0002"/>
+      <assignedPerson><name><prefix>Dr</prefix><given>Sophie</given><family>Bernard</family></name></assignedPerson>
+    </assignedEntity>
+  </legalAuthenticator>
+  <!-- Traçabilité : demande (numéro d'examen) -->
+  <inFulfillmentOf>
+    <order>
+      <id root="2.25.15160578678088058174301844912568396362.2" extension="ACC-2026-0001"/>
+      <code code="36643-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="XR Chest 2 Views"/>
+    </order>
+  </inFulfillmentOf>
+  <!-- Traçabilité : étude DICOM dans Orthanc (Study Instance UID) -->
+  <documentationOf>
+    <serviceEvent classCode="ACT">
+      <id root="2.25.15160578678088058174301844912568396362.6.1.20260001"/>
+      <code code="36643-5" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="XR Chest 2 Views"/>
+      <effectiveTime value="20261125100500+0100"/>
+    </serviceEvent>
+  </documentationOf>
+  <!-- Traçabilité : consultation à l'origine de la demande -->
+  <componentOf>
+    <encompassingEncounter>
+      <id root="2.25.15160578678088058174301844912568396362.5" extension="ENC-2026-0001"/>
+      <effectiveTime><low value="20261123090000+0100"/></effectiveTime>
+    </encompassingEncounter>
+  </componentOf>
+  <!-- 4. Contenu clinique lisible -->
+  <component>
+    <structuredBody>
+      <component>
+        <section>
+          <code code="18785-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Reason for study"/>
+          <title>Indication</title>
+          <text>Toux persistante depuis 3 semaines. Recherche de foyer infectieux. Demande du Dr Paul Durand (ACC-2026-0001).</text>
+        </section>
+      </component>
+      <component>
+        <section>
+          <code code="55111-9" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Current imaging procedure descriptions"/>
+          <title>Technique</title>
+          <text>Radiographie du thorax de face, en inspiration, patiente debout.</text>
+        </section>
+      </component>
+      <component>
+        <section>
+          <code code="18782-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Radiology Study observation"/>
+          <title>Résultats</title>
+          <text>
+            <list>
+              <item>Parenchyme pulmonaire normalement transparent, sans opacité focale.</item>
+              <item>Culs-de-sac pleuraux libres.</item>
+              <item>Silhouette cardio-médiastinale de taille normale.</item>
+            </list>
+          </text>
+        </section>
+      </component>
+      <component>
+        <section>
+          <code code="19005-8" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Radiology Imaging study [Impression]"/>
+          <title>Conclusion</title>
+          <text>Radiographie thoracique sans anomalie pleuro-parenchymateuse décelable. Pas de foyer de condensation.</text>
+        </section>
+      </component>
+    </structuredBody>
+  </component>
+</ClinicalDocument>
