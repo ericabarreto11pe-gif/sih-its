@@ -14,7 +14,7 @@
 | Espace patient / téléconsultation (reprise ITS2) | `Appointment` (lecture), CR validés uniquement |
 
 Les formats d'identifiants et les liens attendus sont dans `docs/conception/01-identifiants.md`.
-Exemples de ressources : `interop/fhir/exemples/02-…`, `06-…`, `07-…`.
+Exemples de ressources (Patient, Encounter, ServiceRequest) : `interop/fhir/scenario-complet.json`.
 
 ## Organisation du code (indépendante du langage choisi)
 

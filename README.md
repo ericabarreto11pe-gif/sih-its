@@ -23,7 +23,7 @@ sih-its/
 │   ├── ris/                     B – RIS
 │   └── cda-connector/           B – génération du CDA
 ├── interop/
-│   ├── fhir/                    exemples FHIR R4, bundle du scénario, requêtes .http
+│   ├── fhir/                    exemples officiels HL7 R4, bundle du scénario, requêtes .http
 │   ├── cda/                     exemple CDA R2 + script de validation
 │   └── dicom/                   worklists + modalité simulée (extension)
 ├── infra/                       C – vm1-proxy, vm2-apps, vm3-data, scripts
