@@ -1,0 +1,29 @@
+{
+  "resourceType": "Practitioner",
+  "id": "pra-0001",
+  "identifier": [
+    {
+      "system": "http://sih-its.local/sid/praticien",
+      "value": "PRA-0001"
+    }
+  ],
+  "active": true,
+  "name": [
+    {
+      "family": "Durand",
+      "given": [
+        "Paul"
+      ],
+      "prefix": [
+        "Dr"
+      ]
+    }
+  ],
+  "qualification": [
+    {
+      "code": {
+        "text": "Médecin généraliste"
+      }
+    }
+  ]
+}

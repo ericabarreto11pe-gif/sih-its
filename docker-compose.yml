@@ -1,0 +1,68 @@
+# Environnement de DÉVELOPPEMENT : tous les services de données sur un seul PC.
+# Pour l'intégration et la démo, ces services sont répartis sur les 3 VM (voir infra/README.md).
+#
+#   cp .env.example .env      # puis changer les mots de passe
+#   docker compose up -d
+#   FHIR    : http://localhost:8080/fhir
+#   Orthanc : http://localhost:8042   (DICOM sur le port 4242)
+#
+# Les ports ne sont ouverts que sur 127.0.0.1 : rien n'est exposé au réseau.
+# À FAIRE (Membre C) : remplacer « latest » par les versions exactes utilisées
+# (docker image ls) et les citer dans le rapport, comme le demande le cahier des charges.
+name: sih-its
+
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: hapi
+      POSTGRES_USER: ${POSTGRES_USER:-hapi}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?définir POSTGRES_PASSWORD dans .env}
+    volumes:
+      - pgdata:/var/lib/postgresql/data        # persistance après redémarrage
+    restart: unless-stopped
+
+  fhir:
+    image: hapiproject/hapi:latest
+    depends_on:
+      - db
+    environment:
+      spring.datasource.url: jdbc:postgresql://db:5432/hapi
+      spring.datasource.username: ${POSTGRES_USER:-hapi}
+      spring.datasource.password: ${POSTGRES_PASSWORD}
+      spring.datasource.driverClassName: org.postgresql.Driver
+      spring.jpa.properties.hibernate.dialect: ca.uhn.fhir.jpa.model.dialect.HapiFhirPostgresDialect
+      hapi.fhir.fhir_version: R4
+    ports:
+      - "127.0.0.1:8080:8080"
+    restart: unless-stopped
+
+  orthanc:
+    image: orthancteam/orthanc:latest
+    environment:
+      ORTHANC__NAME: SIH-ITS-PACS
+      ORTHANC__DICOM_AET: ORTHANC
+      ORTHANC__AUTHENTICATION_ENABLED: "true"
+      ORTHANC__REGISTERED_USERS: '{"${ORTHANC_UTILISATEUR:-ris}": "${ORTHANC_MOT_DE_PASSE:?définir ORTHANC_MOT_DE_PASSE dans .env}"}'
+      # Modalité simulée autorisée à interroger la worklist et à envoyer des images
+      ORTHANC__DICOM_MODALITIES: '{"modsim": {"AET": "MODSIM", "Host": "host.docker.internal", "Port": 11112}}'
+      WORKLISTS_PLUGIN_ENABLED: "true"          # extension : worklist DICOM
+      DICOM_WEB_PLUGIN_ENABLED: "true"
+      STONE_WEB_VIEWER_PLUGIN_ENABLED: "true"   # visionneuse web pour le radiologue et le médecin
+    volumes:
+      - orthanc-db:/var/lib/orthanc/db
+      - ./interop/dicom/worklists:/var/lib/orthanc/worklists   # fichiers .wl déposés par le RIS
+    ports:
+      - "127.0.0.1:8042:8042"
+      - "127.0.0.1:4242:4242"
+    restart: unless-stopped
+
+  # À ajouter au fil du projet :
+  #   sih            (Membre A)  -> services/sih
+  #   ris            (Membre B)  -> services/ris
+  #   cda-connector  (Membre B)  -> services/cda-connector
+  #   iam, proxy     (Membre C)  -> infra/
+
+volumes:
+  pgdata:
+  orthanc-db:

@@ -1,0 +1,87 @@
+{
+  "resourceType": "DocumentReference",
+  "id": "doc-acc-2026-0001",
+  "masterIdentifier": {
+    "system": "urn:oid:2.25.15160578678088058174301844912568396362.3",
+    "value": "DOC-ACC-2026-0001-v1"
+  },
+  "identifier": [
+    {
+      "system": "http://sih-its.local/sid/document",
+      "value": "DOC-ACC-2026-0001-v1"
+    }
+  ],
+  "status": "current",
+  "docStatus": "final",
+  "type": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "code": "18748-4",
+        "display": "Diagnostic imaging study"
+      }
+    ]
+  },
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://loinc.org",
+          "code": "18726-0",
+          "display": "Radiology studies (set)"
+        }
+      ]
+    }
+  ],
+  "subject": {
+    "reference": "Patient/pat-0001",
+    "display": "Léa Martin"
+  },
+  "date": "2026-11-25T14:30:00+01:00",
+  "author": [
+    {
+      "reference": "Practitioner/pra-0002",
+      "display": "Dr Sophie Bernard"
+    }
+  ],
+  "authenticator": {
+    "reference": "Practitioner/pra-0002"
+  },
+  "custodian": {
+    "reference": "Organization/org-hopital-its"
+  },
+  "description": "Compte rendu CDA R2 de la radiographie du thorax ACC-2026-0001",
+  "content": [
+    {
+      "attachment": {
+        "contentType": "text/xml",
+        "language": "fr-FR",
+        "url": "Binary/cda-acc-2026-0001",
+        "size": 5373,
+        "title": "CR-ACC-2026-0001.xml",
+        "creation": "2026-11-25T14:30:00+01:00"
+      }
+    }
+  ],
+  "context": {
+    "encounter": [
+      {
+        "reference": "Encounter/enc-2026-0001"
+      }
+    ],
+    "period": {
+      "start": "2026-11-25T10:05:00+01:00"
+    },
+    "related": [
+      {
+        "reference": "ServiceRequest/sr-acc-2026-0001"
+      },
+      {
+        "reference": "ImagingStudy/is-acc-2026-0001"
+      },
+      {
+        "reference": "DiagnosticReport/dr-acc-2026-0001"
+      }
+    ]
+  }
+}

@@ -1,0 +1,655 @@
+{
+  "resourceType": "Bundle",
+  "type": "transaction",
+  "entry": [
+    {
+      "fullUrl": "Organization/org-hopital-its",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "org-hopital-its",
+        "identifier": [
+          {
+            "system": "urn:ietf:rfc:3986",
+            "value": "urn:oid:2.25.15160578678088058174301844912568396362.7"
+          }
+        ],
+        "active": true,
+        "name": "Hôpital ITS (établissement fictif)"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Organization/org-hopital-its"
+      }
+    },
+    {
+      "fullUrl": "Patient/pat-0001",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "pat-0001",
+        "identifier": [
+          {
+            "use": "usual",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "MR"
+                }
+              ]
+            },
+            "system": "http://sih-its.local/sid/patient",
+            "value": "PAT-0001"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "use": "official",
+            "family": "Martin",
+            "given": [
+              "Léa"
+            ]
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1985-04-12",
+        "managingOrganization": {
+          "reference": "Organization/org-hopital-its"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Patient/pat-0001"
+      }
+    },
+    {
+      "fullUrl": "Practitioner/pra-0001",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "pra-0001",
+        "identifier": [
+          {
+            "system": "http://sih-its.local/sid/praticien",
+            "value": "PRA-0001"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "family": "Durand",
+            "given": [
+              "Paul"
+            ],
+            "prefix": [
+              "Dr"
+            ]
+          }
+        ],
+        "qualification": [
+          {
+            "code": {
+              "text": "Médecin généraliste"
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Practitioner/pra-0001"
+      }
+    },
+    {
+      "fullUrl": "Practitioner/pra-0002",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "pra-0002",
+        "identifier": [
+          {
+            "system": "http://sih-its.local/sid/praticien",
+            "value": "PRA-0002"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "family": "Bernard",
+            "given": [
+              "Sophie"
+            ],
+            "prefix": [
+              "Dr"
+            ]
+          }
+        ],
+        "qualification": [
+          {
+            "code": {
+              "text": "Radiologue"
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Practitioner/pra-0002"
+      }
+    },
+    {
+      "fullUrl": "Location/loc-rx1",
+      "resource": {
+        "resourceType": "Location",
+        "id": "loc-rx1",
+        "status": "active",
+        "name": "Salle de radiologie 1",
+        "mode": "instance",
+        "managingOrganization": {
+          "reference": "Organization/org-hopital-its"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Location/loc-rx1"
+      }
+    },
+    {
+      "fullUrl": "Encounter/enc-2026-0001",
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "enc-2026-0001",
+        "identifier": [
+          {
+            "system": "http://sih-its.local/sid/rencontre",
+            "value": "ENC-2026-0001"
+          }
+        ],
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "ambulatory"
+        },
+        "type": [
+          {
+            "text": "Consultation de médecine générale"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/pat-0001",
+          "display": "Léa Martin"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/pra-0001",
+              "display": "Dr Paul Durand"
+            }
+          }
+        ],
+        "period": {
+          "start": "2026-11-23T09:00:00+01:00",
+          "end": "2026-11-23T09:30:00+01:00"
+        },
+        "reasonCode": [
+          {
+            "text": "Toux persistante depuis 3 semaines"
+          }
+        ],
+        "serviceProvider": {
+          "reference": "Organization/org-hopital-its"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/enc-2026-0001"
+      }
+    },
+    {
+      "fullUrl": "ServiceRequest/sr-acc-2026-0001",
+      "resource": {
+        "resourceType": "ServiceRequest",
+        "id": "sr-acc-2026-0001",
+        "identifier": [
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "ACSN",
+                  "display": "Accession ID"
+                }
+              ]
+            },
+            "system": "http://sih-its.local/sid/accession",
+            "value": "ACC-2026-0001"
+          }
+        ],
+        "status": "completed",
+        "intent": "order",
+        "priority": "routine",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "363679005",
+                "display": "Imaging"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "36643-5",
+              "display": "XR Chest 2 Views"
+            }
+          ],
+          "text": "Radiographie du thorax (face + profil)"
+        },
+        "subject": {
+          "reference": "Patient/pat-0001",
+          "display": "Léa Martin"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-2026-0001"
+        },
+        "authoredOn": "2026-11-23T09:20:00+01:00",
+        "requester": {
+          "reference": "Practitioner/pra-0001",
+          "display": "Dr Paul Durand"
+        },
+        "reasonCode": [
+          {
+            "text": "Toux persistante depuis 3 semaines, recherche de foyer"
+          }
+        ],
+        "bodySite": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "51185008",
+                "display": "Thoracic structure"
+              }
+            ],
+            "text": "Thorax"
+          }
+        ],
+        "note": [
+          {
+            "text": "Patiente non enceinte."
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "ServiceRequest/sr-acc-2026-0001"
+      }
+    },
+    {
+      "fullUrl": "Appointment/apt-2026-0001",
+      "resource": {
+        "resourceType": "Appointment",
+        "id": "apt-2026-0001",
+        "identifier": [
+          {
+            "system": "http://sih-its.local/sid/rendez-vous",
+            "value": "RDV-2026-0001"
+          }
+        ],
+        "status": "fulfilled",
+        "serviceCategory": [
+          {
+            "text": "Imagerie médicale"
+          }
+        ],
+        "serviceType": [
+          {
+            "text": "Radiographie conventionnelle"
+          }
+        ],
+        "appointmentType": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/v2-0276",
+              "code": "ROUTINE",
+              "display": "Routine appointment"
+            }
+          ]
+        },
+        "description": "Radiographie du thorax (face + profil) – ACC-2026-0001",
+        "start": "2026-11-25T10:00:00+01:00",
+        "end": "2026-11-25T10:15:00+01:00",
+        "minutesDuration": 15,
+        "created": "2026-11-23T11:02:00+01:00",
+        "comment": "Retirer bijoux et objets métalliques du thorax.",
+        "basedOn": [
+          {
+            "reference": "ServiceRequest/sr-acc-2026-0001"
+          }
+        ],
+        "participant": [
+          {
+            "actor": {
+              "reference": "Patient/pat-0001",
+              "display": "Léa Martin"
+            },
+            "required": "required",
+            "status": "accepted"
+          },
+          {
+            "actor": {
+              "reference": "Location/loc-rx1",
+              "display": "Salle de radiologie 1"
+            },
+            "required": "required",
+            "status": "accepted"
+          },
+          {
+            "actor": {
+              "reference": "Practitioner/pra-0002",
+              "display": "Dr Sophie Bernard"
+            },
+            "required": "information-only",
+            "status": "accepted"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Appointment/apt-2026-0001"
+      }
+    },
+    {
+      "fullUrl": "ImagingStudy/is-acc-2026-0001",
+      "resource": {
+        "resourceType": "ImagingStudy",
+        "id": "is-acc-2026-0001",
+        "identifier": [
+          {
+            "system": "urn:dicom:uid",
+            "value": "urn:oid:2.25.15160578678088058174301844912568396362.6.1.20260001"
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "ACSN"
+                }
+              ]
+            },
+            "system": "http://sih-its.local/sid/accession",
+            "value": "ACC-2026-0001"
+          }
+        ],
+        "status": "available",
+        "modality": [
+          {
+            "system": "http://dicom.nema.org/resources/ontology/DCM",
+            "code": "CR"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/pat-0001"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-2026-0001"
+        },
+        "started": "2026-11-25T10:05:00+01:00",
+        "basedOn": [
+          {
+            "reference": "ServiceRequest/sr-acc-2026-0001"
+          }
+        ],
+        "referrer": {
+          "reference": "Practitioner/pra-0001"
+        },
+        "interpreter": [
+          {
+            "reference": "Practitioner/pra-0002"
+          }
+        ],
+        "numberOfSeries": 1,
+        "numberOfInstances": 1,
+        "procedureCode": [
+          {
+            "coding": [
+              {
+                "system": "http://loinc.org",
+                "code": "36643-5",
+                "display": "XR Chest 2 Views"
+              }
+            ],
+            "text": "Radiographie du thorax (face + profil)"
+          }
+        ],
+        "location": {
+          "reference": "Location/loc-rx1"
+        },
+        "description": "Radiographie du thorax – étude stockée dans Orthanc",
+        "series": [
+          {
+            "uid": "2.25.15160578678088058174301844912568396362.6.2.20260001.1",
+            "number": 1,
+            "modality": {
+              "system": "http://dicom.nema.org/resources/ontology/DCM",
+              "code": "CR"
+            },
+            "description": "Thorax face",
+            "numberOfInstances": 1,
+            "bodySite": {
+              "system": "http://snomed.info/sct",
+              "code": "51185008",
+              "display": "Thoracic structure"
+            },
+            "instance": [
+              {
+                "uid": "2.25.15160578678088058174301844912568396362.6.3.20260001.1.1",
+                "sopClass": {
+                  "system": "urn:ietf:rfc:3986",
+                  "code": "urn:oid:1.2.840.10008.5.1.4.1.1.1"
+                },
+                "number": 1,
+                "title": "Thorax face"
+              }
+            ]
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "ImagingStudy/is-acc-2026-0001"
+      }
+    },
+    {
+      "fullUrl": "DiagnosticReport/dr-acc-2026-0001",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "dr-acc-2026-0001",
+        "identifier": [
+          {
+            "system": "http://sih-its.local/sid/compte-rendu",
+            "value": "CR-ACC-2026-0001"
+          }
+        ],
+        "basedOn": [
+          {
+            "reference": "ServiceRequest/sr-acc-2026-0001"
+          }
+        ],
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "RAD",
+                "display": "Radiology"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "18748-4",
+              "display": "Diagnostic imaging study"
+            }
+          ],
+          "text": "Compte rendu d'imagerie"
+        },
+        "subject": {
+          "reference": "Patient/pat-0001",
+          "display": "Léa Martin"
+        },
+        "encounter": {
+          "reference": "Encounter/enc-2026-0001"
+        },
+        "effectiveDateTime": "2026-11-25T10:05:00+01:00",
+        "issued": "2026-11-25T14:30:00+01:00",
+        "performer": [
+          {
+            "reference": "Organization/org-hopital-its"
+          }
+        ],
+        "resultsInterpreter": [
+          {
+            "reference": "Practitioner/pra-0002",
+            "display": "Dr Sophie Bernard"
+          }
+        ],
+        "imagingStudy": [
+          {
+            "reference": "ImagingStudy/is-acc-2026-0001"
+          }
+        ],
+        "conclusion": "Radiographie thoracique sans anomalie pleuro-parenchymateuse décelable. Pas de foyer de condensation.",
+        "conclusionCode": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "17621005",
+                "display": "Normal"
+              }
+            ]
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "DiagnosticReport/dr-acc-2026-0001"
+      }
+    },
+    {
+      "fullUrl": "Binary/cda-acc-2026-0001",
+      "resource": {
+        "resourceType": "Binary",
+        "id": "cda-acc-2026-0001",
+        "contentType": "text/xml",
+        "data": "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPCEtLSBDb21wdGUgcmVuZHUgZCdpbWFnZXJpZSBDREEgUjIg4oCTIHNjw6luYXJpbyBmaWN0aWYgU0lILUlUUyAoYXVjdW5lIGRvbm7DqWUgcsOpZWxsZSkgLS0+CjxDbGluaWNhbERvY3VtZW50IHhtbG5zPSJ1cm46aGw3LW9yZzp2MyIgeG1sbnM6eHNpPSJodHRwOi8vd3d3LnczLm9yZy8yMDAxL1hNTFNjaGVtYS1pbnN0YW5jZSI+CiAgPHJlYWxtQ29kZSBjb2RlPSJGUiIvPgogIDx0eXBlSWQgcm9vdD0iMi4xNi44NDAuMS4xMTM4ODMuMS4zIiBleHRlbnNpb249IlBPQ0RfSEQwMDAwNDAiLz4KICA8IS0tIDEuIElkZW50aWZpY2F0aW9uIGR1IGRvY3VtZW50IC0tPgogIDxpZCByb290PSIyLjI1LjE1MTYwNTc4Njc4MDg4MDU4MTc0MzAxODQ0OTEyNTY4Mzk2MzYyLjMiIGV4dGVuc2lvbj0iRE9DLUFDQy0yMDI2LTAwMDEtdjEiLz4KICA8Y29kZSBjb2RlPSIxODc0OC00IiBjb2RlU3lzdGVtPSIyLjE2Ljg0MC4xLjExMzg4My42LjEiIGNvZGVTeXN0ZW1OYW1lPSJMT0lOQyIgZGlzcGxheU5hbWU9IkRpYWdub3N0aWMgaW1hZ2luZyBzdHVkeSIvPgogIDx0aXRsZT5Db21wdGUgcmVuZHUgZGUgcmFkaW9ncmFwaGllIGR1IHRob3JheDwvdGl0bGU+CiAgPGVmZmVjdGl2ZVRpbWUgdmFsdWU9IjIwMjYxMTI1MTQzMDAwKzAxMDAiLz4KICA8Y29uZmlkZW50aWFsaXR5Q29kZSBjb2RlPSJOIiBjb2RlU3lzdGVtPSIyLjE2Ljg0MC4xLjExMzg4My41LjI1Ii8+CiAgPGxhbmd1YWdlQ29kZSBjb2RlPSJmci1GUiIvPgogIDxzZXRJZCByb290PSIyLjI1LjE1MTYwNTc4Njc4MDg4MDU4MTc0MzAxODQ0OTEyNTY4Mzk2MzYyLjMiIGV4dGVuc2lvbj0iRE9DLUFDQy0yMDI2LTAwMDEiLz4KICA8dmVyc2lvbk51bWJlciB2YWx1ZT0iMSIvPgogIDwhLS0gMi4gSWRlbnRpZmljYXRpb24gZHUgcGF0aWVudCAtLT4KICA8cmVjb3JkVGFyZ2V0PgogICAgPHBhdGllbnRSb2xlPgogICAgICA8aWQgcm9vdD0iMi4yNS4xNTE2MDU3ODY3ODA4ODA1ODE3NDMwMTg0NDkxMjU2ODM5NjM2Mi4xIiBleHRlbnNpb249IlBBVC0wMDAxIi8+CiAgICAgIDxwYXRpZW50PgogICAgICAgIDxuYW1lPjxnaXZlbj5Mw6lhPC9naXZlbj48ZmFtaWx5Pk1hcnRpbjwvZmFtaWx5PjwvbmFtZT4KICAgICAgICA8YWRtaW5pc3RyYXRpdmVHZW5kZXJDb2RlIGNvZGU9IkYiIGNvZGVTeXN0ZW09IjIuMTYuODQwLjEuMTEzODgzLjUuMSIvPgogICAgICAgIDxiaXJ0aFRpbWUgdmFsdWU9IjE5ODUwNDEyIi8+CiAgICAgIDwvcGF0aWVudD4KICAgIDwvcGF0aWVudFJvbGU+CiAgPC9yZWNvcmRUYXJnZXQ+CiAgPCEtLSAzLiBBdXRldXIgZXQgZGF0ZSAtLT4KICA8YXV0aG9yPgogICAgPHRpbWUgdmFsdWU9IjIwMjYxMTI1MTQyMDAwKzAxMDAiLz4KICAgIDxhc3NpZ25lZEF1dGhvcj4KICAgICAgPGlkIHJvb3Q9IjIuMjUuMTUxNjA1Nzg2NzgwODgwNTgxNzQzMDE4NDQ5MTI1NjgzOTYzNjIuNCIgZXh0ZW5zaW9uPSJQUkEtMDAwMiIvPgogICAgICA8YXNzaWduZWRQZXJzb24+PG5hbWU+PHByZWZpeD5EcjwvcHJlZml4PjxnaXZlbj5Tb3BoaWU8L2dpdmVuPjxmYW1pbHk+QmVybmFyZDwvZmFtaWx5PjwvbmFtZT48L2Fzc2lnbmVkUGVyc29uPgogICAgICA8cmVwcmVzZW50ZWRPcmdhbml6YXRpb24+CiAgICAgICAgPGlkIHJvb3Q9IjIuMjUuMTUxNjA1Nzg2NzgwODgwNTgxNzQzMDE4NDQ5MTI1NjgzOTYzNjIuNyIvPgogICAgICAgIDxuYW1lPkjDtHBpdGFsIElUUyAow6l0YWJsaXNzZW1lbnQgZmljdGlmKTwvbmFtZT4KICAgICAgPC9yZXByZXNlbnRlZE9yZ2FuaXphdGlvbj4KICAgIDwvYXNzaWduZWRBdXRob3I+CiAgPC9hdXRob3I+CiAgPGN1c3RvZGlhbj4KICAgIDxhc3NpZ25lZEN1c3RvZGlhbj4KICAgICAgPHJlcHJlc2VudGVkQ3VzdG9kaWFuT3JnYW5pemF0aW9uPgogICAgICAgIDxpZCByb290PSIyLjI1LjE1MTYwNTc4Njc4MDg4MDU4MTc0MzAxODQ0OTEyNTY4Mzk2MzYyLjciLz4KICAgICAgICA8bmFtZT5Iw7RwaXRhbCBJVFMgKMOpdGFibGlzc2VtZW50IGZpY3RpZik8L25hbWU+CiAgICAgIDwvcmVwcmVzZW50ZWRDdXN0b2RpYW5Pcmdhbml6YXRpb24+CiAgICA8L2Fzc2lnbmVkQ3VzdG9kaWFuPgogIDwvY3VzdG9kaWFuPgogIDwhLS0gVmFsaWRhdGlvbiAoc2lnbmF0dXJlKSBwYXIgbGUgcmFkaW9sb2d1ZSAtLT4KICA8bGVnYWxBdXRoZW50aWNhdG9yPgogICAgPHRpbWUgdmFsdWU9IjIwMjYxMTI1MTQzMDAwKzAxMDAiLz4KICAgIDxzaWduYXR1cmVDb2RlIGNvZGU9IlMiLz4KICAgIDxhc3NpZ25lZEVudGl0eT4KICAgICAgPGlkIHJvb3Q9IjIuMjUuMTUxNjA1Nzg2NzgwODgwNTgxNzQzMDE4NDQ5MTI1NjgzOTYzNjIuNCIgZXh0ZW5zaW9uPSJQUkEtMDAwMiIvPgogICAgICA8YXNzaWduZWRQZXJzb24+PG5hbWU+PHByZWZpeD5EcjwvcHJlZml4PjxnaXZlbj5Tb3BoaWU8L2dpdmVuPjxmYW1pbHk+QmVybmFyZDwvZmFtaWx5PjwvbmFtZT48L2Fzc2lnbmVkUGVyc29uPgogICAgPC9hc3NpZ25lZEVudGl0eT4KICA8L2xlZ2FsQXV0aGVudGljYXRvcj4KICA8IS0tIFRyYcOnYWJpbGl0w6kgOiBkZW1hbmRlIChudW3DqXJvIGQnZXhhbWVuKSAtLT4KICA8aW5GdWxmaWxsbWVudE9mPgogICAgPG9yZGVyPgogICAgICA8aWQgcm9vdD0iMi4yNS4xNTE2MDU3ODY3ODA4ODA1ODE3NDMwMTg0NDkxMjU2ODM5NjM2Mi4yIiBleHRlbnNpb249IkFDQy0yMDI2LTAwMDEiLz4KICAgICAgPGNvZGUgY29kZT0iMzY2NDMtNSIgY29kZVN5c3RlbT0iMi4xNi44NDAuMS4xMTM4ODMuNi4xIiBjb2RlU3lzdGVtTmFtZT0iTE9JTkMiIGRpc3BsYXlOYW1lPSJYUiBDaGVzdCAyIFZpZXdzIi8+CiAgICA8L29yZGVyPgogIDwvaW5GdWxmaWxsbWVudE9mPgogIDwhLS0gVHJhw6dhYmlsaXTDqSA6IMOpdHVkZSBESUNPTSBkYW5zIE9ydGhhbmMgKFN0dWR5IEluc3RhbmNlIFVJRCkgLS0+CiAgPGRvY3VtZW50YXRpb25PZj4KICAgIDxzZXJ2aWNlRXZlbnQgY2xhc3NDb2RlPSJBQ1QiPgogICAgICA8aWQgcm9vdD0iMi4yNS4xNTE2MDU3ODY3ODA4ODA1ODE3NDMwMTg0NDkxMjU2ODM5NjM2Mi42LjEuMjAyNjAwMDEiLz4KICAgICAgPGNvZGUgY29kZT0iMzY2NDMtNSIgY29kZVN5c3RlbT0iMi4xNi44NDAuMS4xMTM4ODMuNi4xIiBjb2RlU3lzdGVtTmFtZT0iTE9JTkMiIGRpc3BsYXlOYW1lPSJYUiBDaGVzdCAyIFZpZXdzIi8+CiAgICAgIDxlZmZlY3RpdmVUaW1lIHZhbHVlPSIyMDI2MTEyNTEwMDUwMCswMTAwIi8+CiAgICA8L3NlcnZpY2VFdmVudD4KICA8L2RvY3VtZW50YXRpb25PZj4KICA8IS0tIFRyYcOnYWJpbGl0w6kgOiBjb25zdWx0YXRpb24gw6AgbCdvcmlnaW5lIGRlIGxhIGRlbWFuZGUgLS0+CiAgPGNvbXBvbmVudE9mPgogICAgPGVuY29tcGFzc2luZ0VuY291bnRlcj4KICAgICAgPGlkIHJvb3Q9IjIuMjUuMTUxNjA1Nzg2NzgwODgwNTgxNzQzMDE4NDQ5MTI1NjgzOTYzNjIuNSIgZXh0ZW5zaW9uPSJFTkMtMjAyNi0wMDAxIi8+CiAgICAgIDxlZmZlY3RpdmVUaW1lPjxsb3cgdmFsdWU9IjIwMjYxMTIzMDkwMDAwKzAxMDAiLz48L2VmZmVjdGl2ZVRpbWU+CiAgICA8L2VuY29tcGFzc2luZ0VuY291bnRlcj4KICA8L2NvbXBvbmVudE9mPgogIDwhLS0gNC4gQ29udGVudSBjbGluaXF1ZSBsaXNpYmxlIC0tPgogIDxjb21wb25lbnQ+CiAgICA8c3RydWN0dXJlZEJvZHk+CiAgICAgIDxjb21wb25lbnQ+CiAgICAgICAgPHNlY3Rpb24+CiAgICAgICAgICA8Y29kZSBjb2RlPSIxODc4NS02IiBjb2RlU3lzdGVtPSIyLjE2Ljg0MC4xLjExMzg4My42LjEiIGNvZGVTeXN0ZW1OYW1lPSJMT0lOQyIgZGlzcGxheU5hbWU9IlJlYXNvbiBmb3Igc3R1ZHkiLz4KICAgICAgICAgIDx0aXRsZT5JbmRpY2F0aW9uPC90aXRsZT4KICAgICAgICAgIDx0ZXh0PlRvdXggcGVyc2lzdGFudGUgZGVwdWlzIDMgc2VtYWluZXMuIFJlY2hlcmNoZSBkZSBmb3llciBpbmZlY3RpZXV4LiBEZW1hbmRlIGR1IERyIFBhdWwgRHVyYW5kIChBQ0MtMjAyNi0wMDAxKS48L3RleHQ+CiAgICAgICAgPC9zZWN0aW9uPgogICAgICA8L2NvbXBvbmVudD4KICAgICAgPGNvbXBvbmVudD4KICAgICAgICA8c2VjdGlvbj4KICAgICAgICAgIDxjb2RlIGNvZGU9IjU1MTExLTkiIGNvZGVTeXN0ZW09IjIuMTYuODQwLjEuMTEzODgzLjYuMSIgY29kZVN5c3RlbU5hbWU9IkxPSU5DIiBkaXNwbGF5TmFtZT0iQ3VycmVudCBpbWFnaW5nIHByb2NlZHVyZSBkZXNjcmlwdGlvbnMiLz4KICAgICAgICAgIDx0aXRsZT5UZWNobmlxdWU8L3RpdGxlPgogICAgICAgICAgPHRleHQ+UmFkaW9ncmFwaGllIGR1IHRob3JheCBkZSBmYWNlLCBlbiBpbnNwaXJhdGlvbiwgcGF0aWVudGUgZGVib3V0LjwvdGV4dD4KICAgICAgICA8L3NlY3Rpb24+CiAgICAgIDwvY29tcG9uZW50PgogICAgICA8Y29tcG9uZW50PgogICAgICAgIDxzZWN0aW9uPgogICAgICAgICAgPGNvZGUgY29kZT0iMTg3ODItMyIgY29kZVN5c3RlbT0iMi4xNi44NDAuMS4xMTM4ODMuNi4xIiBjb2RlU3lzdGVtTmFtZT0iTE9JTkMiIGRpc3BsYXlOYW1lPSJSYWRpb2xvZ3kgU3R1ZHkgb2JzZXJ2YXRpb24iLz4KICAgICAgICAgIDx0aXRsZT5Sw6lzdWx0YXRzPC90aXRsZT4KICAgICAgICAgIDx0ZXh0PgogICAgICAgICAgICA8bGlzdD4KICAgICAgICAgICAgICA8aXRlbT5QYXJlbmNoeW1lIHB1bG1vbmFpcmUgbm9ybWFsZW1lbnQgdHJhbnNwYXJlbnQsIHNhbnMgb3BhY2l0w6kgZm9jYWxlLjwvaXRlbT4KICAgICAgICAgICAgICA8aXRlbT5DdWxzLWRlLXNhYyBwbGV1cmF1eCBsaWJyZXMuPC9pdGVtPgogICAgICAgICAgICAgIDxpdGVtPlNpbGhvdWV0dGUgY2FyZGlvLW3DqWRpYXN0aW5hbGUgZGUgdGFpbGxlIG5vcm1hbGUuPC9pdGVtPgogICAgICAgICAgICA8L2xpc3Q+CiAgICAgICAgICA8L3RleHQ+CiAgICAgICAgPC9zZWN0aW9uPgogICAgICA8L2NvbXBvbmVudD4KICAgICAgPGNvbXBvbmVudD4KICAgICAgICA8c2VjdGlvbj4KICAgICAgICAgIDxjb2RlIGNvZGU9IjE5MDA1LTgiIGNvZGVTeXN0ZW09IjIuMTYuODQwLjEuMTEzODgzLjYuMSIgY29kZVN5c3RlbU5hbWU9IkxPSU5DIiBkaXNwbGF5TmFtZT0iUmFkaW9sb2d5IEltYWdpbmcgc3R1ZHkgW0ltcHJlc3Npb25dIi8+CiAgICAgICAgICA8dGl0bGU+Q29uY2x1c2lvbjwvdGl0bGU+CiAgICAgICAgICA8dGV4dD5SYWRpb2dyYXBoaWUgdGhvcmFjaXF1ZSBzYW5zIGFub21hbGllIHBsZXVyby1wYXJlbmNoeW1hdGV1c2UgZMOpY2VsYWJsZS4gUGFzIGRlIGZveWVyIGRlIGNvbmRlbnNhdGlvbi48L3RleHQ+CiAgICAgICAgPC9zZWN0aW9uPgogICAgICA8L2NvbXBvbmVudD4KICAgIDwvc3RydWN0dXJlZEJvZHk+CiAgPC9jb21wb25lbnQ+CjwvQ2xpbmljYWxEb2N1bWVudD4K"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Binary/cda-acc-2026-0001"
+      }
+    },
+    {
+      "fullUrl": "DocumentReference/doc-acc-2026-0001",
+      "resource": {
+        "resourceType": "DocumentReference",
+        "id": "doc-acc-2026-0001",
+        "masterIdentifier": {
+          "system": "urn:oid:2.25.15160578678088058174301844912568396362.3",
+          "value": "DOC-ACC-2026-0001-v1"
+        },
+        "identifier": [
+          {
+            "system": "http://sih-its.local/sid/document",
+            "value": "DOC-ACC-2026-0001-v1"
+          }
+        ],
+        "status": "current",
+        "docStatus": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "18748-4",
+              "display": "Diagnostic imaging study"
+            }
+          ]
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://loinc.org",
+                "code": "18726-0",
+                "display": "Radiology studies (set)"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "Patient/pat-0001",
+          "display": "Léa Martin"
+        },
+        "date": "2026-11-25T14:30:00+01:00",
+        "author": [
+          {
+            "reference": "Practitioner/pra-0002",
+            "display": "Dr Sophie Bernard"
+          }
+        ],
+        "authenticator": {
+          "reference": "Practitioner/pra-0002"
+        },
+        "custodian": {
+          "reference": "Organization/org-hopital-its"
+        },
+        "description": "Compte rendu CDA R2 de la radiographie du thorax ACC-2026-0001",
+        "content": [
+          {
+            "attachment": {
+              "contentType": "text/xml",
+              "language": "fr-FR",
+              "url": "Binary/cda-acc-2026-0001",
+              "size": 5373,
+              "title": "CR-ACC-2026-0001.xml",
+              "creation": "2026-11-25T14:30:00+01:00"
+            }
+          }
+        ],
+        "context": {
+          "encounter": [
+            {
+              "reference": "Encounter/enc-2026-0001"
+            }
+          ],
+          "period": {
+            "start": "2026-11-25T10:05:00+01:00"
+          },
+          "related": [
+            {
+              "reference": "ServiceRequest/sr-acc-2026-0001"
+            },
+            {
+              "reference": "ImagingStudy/is-acc-2026-0001"
+            },
+            {
+              "reference": "DiagnosticReport/dr-acc-2026-0001"
+            }
+          ]
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "DocumentReference/doc-acc-2026-0001"
+      }
+    }
+  ]
+}

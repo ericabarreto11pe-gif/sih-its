@@ -1,0 +1,20 @@
+# Secrets : seul .env.example est versionné
+.env
+
+# macOS
+.DS_Store
+
+# Python / Node
+.venv/
+__pycache__/
+*.pyc
+node_modules/
+
+# Données générées pendant les tests (jamais de données réelles dans le dépôt)
+interop/dicom/worklists/*.wl
+*.dcm
+interop/cda/.schema/
+
+# Divers
+*.log
+.vagrant/

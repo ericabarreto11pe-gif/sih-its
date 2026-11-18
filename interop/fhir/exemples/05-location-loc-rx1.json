@@ -1,0 +1,10 @@
+{
+  "resourceType": "Location",
+  "id": "loc-rx1",
+  "status": "active",
+  "name": "Salle de radiologie 1",
+  "mode": "instance",
+  "managingOrganization": {
+    "reference": "Organization/org-hopital-its"
+  }
+}
