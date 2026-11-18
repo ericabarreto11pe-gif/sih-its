@@ -314,7 +314,7 @@
             {
               "system": "http://terminology.hl7.org/CodeSystem/v2-0276",
               "code": "ROUTINE",
-              "display": "Routine appointment"
+              "display": "Routine appointment - default if not valued"
             }
           ]
         },
