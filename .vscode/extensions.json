@@ -1,0 +1,14 @@
+{
+  // VS Code propose d'installer ces extensions à l'ouverture du projet.
+  "recommendations": [
+    "github.vscode-pull-request-github",   // pull requests et revues dans VS Code
+    "ms-azuretools.vscode-docker",         // docker-compose, conteneurs, logs
+    "hediet.vscode-drawio",                // ouvrir/éditer les .drawio (docs/uml)
+    "humao.rest-client",                   // exécuter interop/fhir/requetes.http
+    "redhat.vscode-xml",                   // CDA : coloration et validation XML
+    "redhat.vscode-yaml",                  // docker-compose.yml
+    "ms-python.python",                    // scripts de la modalité simulée
+    "bierner.markdown-mermaid",            // diagrammes Mermaid dans les .md
+    "editorconfig.editorconfig"
+  ]
+}
